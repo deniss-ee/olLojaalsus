@@ -1,0 +1,124 @@
+/* ==========================================================================
+   Reward category labels (thin strip at the top of each reward)
+   Shown on: home carousel card, "all rewards" list card, expanded reward view.
+   Implemented with ::before, so the DOM is untouched and the layout stays intact.
+   NOTE: the label shows only for rewards that have a line in section 1.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1) CATEGORY LABELS — one line per reward. Edit the text between the quotes.
+      Format:  reward id -> label text   (the comment on the right is the reward name)
+      To label a new reward, copy any line and change the id and the text.
+      Rewards without a line here get no label.
+   ========================================================================== */
+
+:is(.reward-carousel__reward-card, .reward-list__reward-card, .reward-details)[data-redemption_id="reward_66db6"]::before { content: "Digitooted"; } /* Free access for a 24h */
+:is(.reward-carousel__reward-card, .reward-list__reward-card, .reward-details)[data-redemption_id="reward_bcf26"]::before { content: "Digitooted"; } /* Free Access for a week */
+:is(.reward-carousel__reward-card, .reward-list__reward-card, .reward-details)[data-redemption_id="reward_7405d"]::before { content: "Digitooted"; } /* Premium Add Free Subscription */
+
+:is(.reward-carousel__reward-card, .reward-list__reward-card, .reward-details)[data-redemption_id="reward_95f16"]::before { content: "New Reward"; } /* New Reward (45 points) */
+:is(.reward-carousel__reward-card, .reward-list__reward-card, .reward-details)[data-redemption_id="reward_c9a73"]::before { content: "New Reward"; } /* New Reward (330 points) */
+
+:is(.reward-carousel__reward-card, .reward-list__reward-card, .reward-details)[data-redemption_id="reward_edb94"]::before { content: "Pabertooted"; } /* Ristik 3-month subscription -20% */
+:is(.reward-carousel__reward-card, .reward-list__reward-card, .reward-details)[data-redemption_id="reward_b72d5"]::before { content: "Pabertooted"; } /* Ripsik 3-month subscription -20% */
+:is(.reward-carousel__reward-card, .reward-list__reward-card, .reward-details)[data-redemption_id="reward_fa260"]::before { content: "Pabertooted"; } /* Tiiu 3-month subscription -20% */
+:is(.reward-carousel__reward-card, .reward-list__reward-card, .reward-details)[data-redemption_id="reward_ee751"]::before { content: "Pabertooted"; } /* Naisteleht 3-month subscription -20% */
+:is(.reward-carousel__reward-card, .reward-list__reward-card, .reward-details)[data-redemption_id="reward_841a3"]::before { content: "Pabertooted"; } /* Õhtuleht 3-month subscription -20% */
+
+:is(.reward-carousel__reward-card, .reward-list__reward-card, .reward-details)[data-redemption_id="reward_ab5fb"]::before { content: "Partnerite pakkumised"; } /* bgl. drinks -20% */
+:is(.reward-carousel__reward-card, .reward-list__reward-card, .reward-details)[data-redemption_id="reward_a9bda"]::before { content: "Partnerite pakkumised"; } /* Kingitus.ee -10% promo code */
+:is(.reward-carousel__reward-card, .reward-list__reward-card, .reward-details)[data-redemption_id="reward_52d7c"]::before { content: "Partnerite pakkumised"; } /* Tradehouse full-price products -10% */
+:is(.reward-carousel__reward-card, .reward-list__reward-card, .reward-details)[data-redemption_id="reward_01861"]::before { content: "Partnerite pakkumised"; } /* Matkafy lantern hikes -10% */
+:is(.reward-carousel__reward-card, .reward-list__reward-card, .reward-details)[data-redemption_id="reward_699ed"]::before { content: "Partnerite pakkumised"; } /* Elamus Spa -10% */
+:is(.reward-carousel__reward-card, .reward-list__reward-card, .reward-details)[data-redemption_id="reward_e7cab"]::before { content: "Partnerite pakkumised"; } /* CINAMON Kosmos free cinema ticket */
+
+:is(.reward-carousel__reward-card, .reward-list__reward-card, .reward-details)[data-redemption_id="reward_a8475"]::before { content: "Logoga tooted"; } /* Õhtuleht socks 37-41 */
+:is(.reward-carousel__reward-card, .reward-list__reward-card, .reward-details)[data-redemption_id="reward_6f322"]::before { content: "Logoga tooted"; } /* Õhtuleht socks 42-46 */
+:is(.reward-carousel__reward-card, .reward-list__reward-card, .reward-details)[data-redemption_id="reward_ea668"]::before { content: "Logoga tooted"; } /* Coffee glass */
+:is(.reward-carousel__reward-card, .reward-list__reward-card, .reward-details)[data-redemption_id="reward_1236b"]::before { content: "Logoga tooted"; } /* Coffee thermos with lid */
+:is(.reward-carousel__reward-card, .reward-list__reward-card, .reward-details)[data-redemption_id="reward_f0625"]::before { content: "Logoga tooted"; } /* Fabric tote bag */
+:is(.reward-carousel__reward-card, .reward-list__reward-card, .reward-details)[data-redemption_id="reward_30463"]::before { content: "Logoga tooted"; } /* Õhtuleht thermos bottle */
+:is(.reward-carousel__reward-card, .reward-list__reward-card, .reward-details)[data-redemption_id="reward_c7144"]::before { content: "Logoga tooted"; } /* Earrings */
+
+
+/* ==========================================================================
+   2) LOOK OF THE LABEL (no need to edit when changing label texts)
+   ========================================================================== */
+.reward-carousel__reward-card::before,
+.reward-list__reward-card::before,
+.reward-details::before {
+  display: block;
+  box-sizing: border-box;
+  padding: 0.3rem 0.8rem;
+  border-radius: 0.375rem; /* all four corners */
+  background: var(--zrl-global-primary-color);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+
+/* ==========================================================================
+   3) CARDS (home carousel and "all rewards" list):
+      smaller corner radius, no border, no shadow; corners clip the label.
+   ========================================================================== */
+/* ".zrl-card_base" is repeated to out-rank the widget's own card styles */
+.reward-carousel__reward-card.zrl-card_base,
+.reward-list__reward-card.zrl-card_base {
+  --zrl-card-roundness: 0.375rem;
+  --zrl-image-roundness: 0.375rem; /* same radius on the image inside, so all corners match */
+  border: none;
+  box-shadow: none;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* The inner block has height:100% in the widget styles, which pushed the button
+   down when the label was added. Now it only takes the space left under the label. */
+.reward-carousel__reward-card > .zrl-stack_base,
+.reward-list__reward-card > .zrl-stack_base {
+  flex: 1 1 auto;
+  height: auto;
+  min-height: 0;
+}
+
+
+/* ==========================================================================
+   4) EXPANDED REWARD VIEW
+      On desktop this is a flex row (image | text). The label takes the whole
+      first row, so the image | text row stays exactly as before.
+   ========================================================================== */
+.reward-details::before {
+  order: -1;
+  align-self: flex-start;
+}
+
+/* same radius on the big image as on the cards */
+.reward-details { --zrl-image-roundness: 0.375rem; }
+
+@media (min-width: 48em) {
+  .reward-details {
+    flex-wrap: wrap;
+    row-gap: 0.75rem;
+  }
+  .reward-details::before {
+    flex: 0 0 100%;
+  }
+}
+
+
+/* ==========================================================================
+   5) ACTIVITY CARDS (any view): no border, no shadow, same corner radius
+      as the reward cards. Matches every activity card by its data-activity_id.
+   ========================================================================== */
+.zrl-card_base[data-activity_id] {
+  --zrl-card-roundness: 0.375rem;
+  --zrl-image-roundness: 0.375rem;
+  border: none;
+  box-shadow: none;
+}
